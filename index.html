@@ -65,6 +65,13 @@
       }
       .sidebar .nav-link {
         color: #333;
+        border-radius: 0.25rem;
+        transition: all 0.2s ease-in-out;
+      }
+      .sidebar .nav-link:hover {
+        background-color: #e9ecef;
+        color: #2b378d;
+        transform: translateX(5px);
       }
       .main-content {
         background: #fff;
@@ -87,6 +94,14 @@
       .table thead th {
         background-color: #2b378d;
         color: white;
+      }
+      .table > tbody > tr > td,
+      .table > tbody > tr > th {
+        transition: background-color 0.2s ease-in-out;
+      }
+      .table > tbody > tr:hover > td,
+      .table > tbody > tr:hover > th {
+        background-color: #e2e3e5 !important; /* A slightly darker grey to be visible on striped and colored rows */
       }
       .letterhead {
         background: #fff;
