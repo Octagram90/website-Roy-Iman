@@ -17358,4 +17358,61 @@
       }
     });
   </script>
+
+  <script>
+    // Blok klik kanan
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      alert("Klik kanan dinonaktifkan di halaman ini.");
+    });
+
+    // Blok kombinasi keyboard
+    document.addEventListener("keydown", function (e) {
+      // Blok Ctrl+U dan Ctrl+S
+      if (
+        e.ctrlKey &&
+        (e.key.toLowerCase() === "u" || e.key.toLowerCase() === "s")
+      ) {
+        e.preventDefault();
+        alert("Akses diblokir!");
+      }
+
+      // Blok F12
+      if (e.keyCode === 123) {
+        // F12
+        e.preventDefault();
+        alert("Developer Tools diblokir!");
+      }
+
+      // Blok Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+      if (
+        e.ctrlKey &&
+        e.shiftKey &&
+        (e.key.toLowerCase() === "i" ||
+          e.key.toLowerCase() === "j" ||
+          e.key.toLowerCase() === "c")
+      ) {
+        e.preventDefault();
+        alert("Developer Tools diblokir!");
+      }
+    });
+
+    // (Opsional) Deteksi jika DevTools dibuka
+    setInterval(function () {
+      if (window.devtoolsOpen) {
+        document.body.innerHTML =
+          "<h1 style='text-align:center; color:red;'>Akses diblokir!</h1>";
+      }
+    }, 1000);
+
+    (function () {
+      const element = new Image();
+      Object.defineProperty(element, "id", {
+        get: function () {
+          window.devtoolsOpen = true;
+        },
+      });
+      console.log(element);
+    })();
+  </script>
 </html>
