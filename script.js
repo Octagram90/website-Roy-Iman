@@ -72,4 +72,24 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+
+  // Search functionality for Table of Contents
+  const tocSearchInput = document.getElementById("toc-search");
+  const tocMenuItems = document.querySelectorAll("#toc-menu > .nav-item");
+
+  if (tocSearchInput) {
+    tocSearchInput.addEventListener("input", function (e) {
+      const searchTerm = e.target.value.toLowerCase().trim();
+
+      tocMenuItems.forEach((item) => {
+        const itemText = item.textContent.toLowerCase();
+        if (itemText.includes(searchTerm)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  }
 });
+

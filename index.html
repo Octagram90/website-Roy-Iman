@@ -56,6 +56,14 @@
         <div class="col-md-3">
           <div class="sidebar">
             <h3 class="text-center mb-3">Table of Contents</h3>
+            <div class="mb-3">
+              <input
+                type="text"
+                id="toc-search"
+                class="form-control"
+                placeholder="Search contents here..."
+              />
+            </div>
             <div class="d-grid gap-2 mb-3">
               <button
                 class="btn btn-sm btn-outline-secondary"
@@ -339,7 +347,7 @@
 
               <!-- Source -->
               <div class="source">
-                <h5 class="text-success">Source:</h5></br>
+                <h5 class="text-success">Source:</h5>
                 <a href="https://s3.amazonaws.com/files.explorer.devtechlab.com/us_foreign_budget_complete.xlsx" target="_blank">
   https://s3.amazonaws.com/files.explorer.devtechlab.com/us_foreign_budget_complete.xlsx
 </a>
@@ -368,6 +376,15 @@
                   </div>
                 </div>
               </div>
+              
+<!-- Stakeholders -->
+              <div class="mt-4">
+                <h6 class="fw-bold text-secondary">Stakeholders</h6>
+                <ul class="stakeholders ps-0">
+                  <li><i class="bi bi-people-fill"></i>Albania</li>
+                  <li><i class="bi bi-people-fill"></i>Europe and Eurasia</li>
+                </ul>
+              </div>
 
               <!-- Submitter -->
               <div class="mt-4">
@@ -384,14 +401,7 @@
                 </div>
               </div>
 
-              <!-- Stakeholders -->
-              <div class="mt-4">
-                <h6 class="fw-bold text-secondary">Stakeholders</h6>
-                <ul class="stakeholders ps-0">
-                  <li><i class="bi bi-people-fill"></i>Albania</li>
-                  <li><i class="bi bi-people-fill"></i>Europe and Eurasia</li>
-                </ul>
-              </div>
+              
 
               <!-- Vision & Mission -->
               <div class="mt-4">
@@ -16754,4 +16764,39 @@
       }
     });
   </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const tableContainers = document.querySelectorAll(".table-responsive");
+
+  tableContainers.forEach((container, index) => {
+    const table = container.querySelector("table");
+    if (!table) return;
+
+    // Buat tombol Show/Hide
+    const toggleTableBtn = document.createElement("button");
+    toggleTableBtn.textContent = "Hide Table";
+    toggleTableBtn.classList.add("btn", "btn-danger", "mb-2");
+
+    // Sisipkan tombol di atas tabel
+    container.parentNode.insertBefore(toggleTableBtn, container);
+
+    // Event klik
+    toggleTableBtn.addEventListener("click", function () {
+      if (table.style.display === "none") {
+        table.style.display = "table"; // tampilkan kembali
+        toggleTableBtn.textContent = "Hide Table";
+        toggleTableBtn.classList.remove("btn-success");
+        toggleTableBtn.classList.add("btn-danger");
+      } else {
+        table.style.display = "none"; // sembunyikan
+        toggleTableBtn.textContent = "Show Table";
+        toggleTableBtn.classList.remove("btn-warning");
+        toggleTableBtn.classList.add("btn-danger");
+      }
+    });
+  });
+});
+</script>
+
 </html>
